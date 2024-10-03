@@ -13,7 +13,7 @@ RUN npm install
 # Copia el código de la aplicación
 COPY . .
 
-# Construye la aplicación
+# Compila la aplicación
 RUN npm run build
 
 # Expone el puerto
