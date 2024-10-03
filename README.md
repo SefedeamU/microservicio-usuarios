@@ -36,6 +36,7 @@ Este proyecto es un microservicio para la gestión de usuarios utilizando **Nest
 4. Ejecutar la aplicación:
 
    ```bash
+   npm run build
    npm run start
    ```
 #### IMPORTANTE: Tengan cuidado con la ruta en que se genera el archivo `main.js` al momento de buildear el proyecto:
