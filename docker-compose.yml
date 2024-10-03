@@ -7,3 +7,9 @@ services:
       - "3000:3000"
     volumes:
       - .:/app
+    networks:
+      - microservicios_network_mv2
+
+networks:
+  microservicios_network_mv2:
+    external: true
