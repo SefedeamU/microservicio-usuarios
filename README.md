@@ -144,6 +144,9 @@ MongooseModule.forRoot('mongodb://54.234.150.200:27017/usuarios_db')
 
 5. Crear un Pull Request.
 
+## Puerto
+La aplicación se ejecuta en el puerto `3000`. Asegúrate de que este puerto esté disponible en tu máquina.
+
 ## Licencia
 
 Este proyecto está licenciado bajo los términos de la licencia **MIT**.
