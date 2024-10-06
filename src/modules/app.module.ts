@@ -5,7 +5,7 @@ import { RolesModule } from './users/roles.module';
 
 @Module({
     imports: [
-        MongooseModule.forRoot('mongodb://54.234.150.200:27017/usuarios_db'),
+        MongooseModule.forRoot('mongodb://api_usuarios:Mongodb@123@54.234.150.200:27017/usuarios_db'),
         UsersModule,
         RolesModule,
     ],

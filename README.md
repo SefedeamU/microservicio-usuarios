@@ -147,6 +147,8 @@ MongooseModule.forRoot('mongodb://54.234.150.200:27017/usuarios_db')
 ## Puerto
 La aplicación se ejecuta en el puerto `3000`. Asegúrate de que este puerto esté disponible en tu máquina.
 
+## Nota
+Actualmente la api no tiene ningún tipo de seguridad, ya que no se requiere de ningun tokenn de autenticación en los encabezados por lo que se recomienda no utilizarla en un entorno de producción.
 ## Licencia
 
 Este proyecto está licenciado bajo los términos de la licencia **MIT**.

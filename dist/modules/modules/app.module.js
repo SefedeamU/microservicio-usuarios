@@ -17,7 +17,7 @@ exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot('mongodb://54.234.150.200:27017/usuarios_db'),
+            mongoose_1.MongooseModule.forRoot('mongodb://api_usuarios:Mongodb@123@54.234.150.200:27017/usuarios_db'),
             users_module_1.UsersModule,
             roles_module_1.RolesModule,
         ],

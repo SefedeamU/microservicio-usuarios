@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="usuarios_db@54.234.150.200">
+  <database-model serializer="dbm" dbms="MONGO" family-id="MONGO" format-version="4.53">
+    <root id="1">
+      <ServerVersion>5.0.29</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="admin"/>
+    <schema id="3" parent="1" name="config"/>
+    <schema id="4" parent="1" name="local"/>
+    <schema id="5" parent="1" name="usuarios_db">
+      <Current>1</Current>
+      <LastIntrospectionLocalTimestamp>2024-10-05.21:35:54</LastIntrospectionLocalTimestamp>
+    </schema>
+    <table id="6" parent="5" name="roles"/>
+    <table id="7" parent="5" name="users"/>
+  </database-model>
+</dataSource>
