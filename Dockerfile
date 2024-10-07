@@ -1,23 +1,32 @@
-# Usa una imagen base de Node.js
+# Use a Node.js base image
 FROM node:16-alpine
 
-# Establece el directorio de trabajo en el contenedor
+# Set the working directory
 WORKDIR /app
 
-# Copia el archivo de dependencias
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Instala las dependencias
+# Install dependencies
 RUN npm install
 
-# Copia el código de la aplicación
+# Install @nestjs/cli as a development dependency
+RUN npm install --save-dev @nestjs/cli
+
+# Copy the rest of the application files
 COPY . .
 
-# Compila la aplicación
-RUN npm run build
+# Set the PATH to include node_modules/.bin
+ENV PATH="./node_modules/.bin:$PATH"
 
-# Expone el puerto
+# Ensure the nest binary has execute permissions
+RUN chmod +x ./node_modules/.bin/nest
+
+# Compile the application
+RUN npx nest build
+
+# Expose the port
 EXPOSE 3000
 
-# Comando para correr la aplicación
+# Command to run the application
 CMD ["npm", "run", "start:prod"]

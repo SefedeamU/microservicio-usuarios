@@ -8,13 +8,30 @@ export class UsersController {
     constructor(private readonly usersService: UsersService) {}
 
     @Post()
-    create(@Body() createUserDto: CreateUserDto) {
-        return this.usersService.create(createUserDto);
+    async create(@Body() createUserDto: CreateUserDto) {
+        const { user, token } = await this.usersService.create(createUserDto);
+        return {
+            user: {
+                id: user._id,
+                nombre: user.nombre,
+                email: user.email,
+            },
+            token,
+        };
     }
 
     @Post('login')
-    login(@Body() loginUserDto: LoginUserDto) {
-        return this.usersService.login(loginUserDto);
+    async login(@Body() loginUserDto: LoginUserDto) {
+        const user = await this.usersService.validateUser(loginUserDto);
+        const token = await this.usersService.generateToken(user);
+        return {
+            user: {
+                id: user._id,
+                nombre: user.nombre,
+                email: user.email,
+            },
+            token,
+        };
     }
 
     @Get()

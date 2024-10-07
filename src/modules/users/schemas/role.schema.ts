@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Role extends Document {
-    @Prop({ required: true })
+    @Prop({ required: false })
     nombre: string = '';
 }
 

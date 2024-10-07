@@ -18,8 +18,6 @@ let User = class User extends mongoose_2.Document {
         this.nombre = '';
         this.email = '';
         this.password = '';
-        this.proyectos = [];
-        this.rol_id = '';
         this.fecha_creacion = new Date();
         this.activo = true;
     }
@@ -37,14 +35,6 @@ __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ type: [String], default: [] }),
-    __metadata("design:type", Array)
-], User.prototype, "proyectos", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], User.prototype, "rol_id", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ default: Date.now }),
     __metadata("design:type", Date)

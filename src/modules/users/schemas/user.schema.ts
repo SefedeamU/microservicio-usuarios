@@ -12,12 +12,6 @@ export class User extends Document {
     @Prop({ required: true })
     password: string = '';
 
-    @Prop({ type: [String], default: [] })
-    proyectos: string[] = [];
-
-    @Prop({ required: true })
-    rol_id: string = '';
-
     @Prop({ default: Date.now })
     fecha_creacion: Date = new Date();
 

@@ -23,22 +23,38 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
+const jwt_1 = require("@nestjs/jwt");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const user_schema_1 = require("./schemas/user.schema");
 let UsersService = class UsersService {
-    constructor(userModel) {
+    constructor(userModel, jwtService) {
         this.userModel = userModel;
+        this.jwtService = jwtService;
     }
     create(createUserDto) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log('createUserDto:', createUserDto); // Registra el DTO para depurar
             const createdUser = new this.userModel(createUserDto);
-            return createdUser.save();
+            yield createdUser.save();
+            console.log('createdUser:', createdUser); // Registra el usuario creado para depurar
+            const token = this.jwtService.sign({ id: createdUser._id, email: createdUser.email }, { expiresIn: '1h' });
+            return { user: createdUser, token };
         });
     }
-    login(loginUserDto) {
+    validateUser(loginUserDto) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.userModel.findOne({ email: loginUserDto.email, password: loginUserDto.password }).exec();
+            const user = yield this.userModel.findOne({ email: loginUserDto.email }).exec();
+            if (user && user.password === loginUserDto.password) {
+                return user;
+            }
+            throw new Error('Invalid credentials');
+        });
+    }
+    generateToken(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const payload = { username: user.nombre, sub: user._id };
+            return this.jwtService.sign(payload);
         });
     }
     findAll() {
@@ -66,5 +82,6 @@ exports.UsersService = UsersService;
 exports.UsersService = UsersService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(user_schema_1.User.name)),
-    __metadata("design:paramtypes", [mongoose_2.Model])
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        jwt_1.JwtService])
 ], UsersService);

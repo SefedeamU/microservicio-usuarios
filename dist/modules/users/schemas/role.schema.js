@@ -20,7 +20,7 @@ let Role = class Role extends mongoose_2.Document {
 };
 exports.Role = Role;
 __decorate([
-    (0, mongoose_1.Prop)({ required: true }),
+    (0, mongoose_1.Prop)({ required: false }),
     __metadata("design:type", String)
 ], Role.prototype, "nombre", void 0);
 exports.Role = Role = __decorate([
